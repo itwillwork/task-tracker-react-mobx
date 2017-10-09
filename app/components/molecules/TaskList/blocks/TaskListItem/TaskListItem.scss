@@ -1,0 +1,40 @@
+.TaskListItem {
+  height: 59px;
+  padding: 10px 8px;
+  box-sizing: border-box;
+  background: white;
+  border-bottom: 1px solid #f7f7f7;
+  cursor: pointer;
+
+  .name {
+    height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 0;
+  }
+
+  .info {
+    height: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 15px;
+    color: #b5b5b5;
+  }
+
+  &:last-child {
+    border-bottom-width: 0;
+  }
+
+  &:hover {
+    background-color: rgba(1, 147, 214, 0.05);
+  }
+
+  &--isSelected {
+    background-color: rgba(1, 147, 214, 0.05);
+  }
+}

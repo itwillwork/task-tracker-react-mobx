@@ -1,0 +1,28 @@
+.TaskPage {
+  height: 100%;
+  border-right: 1px solid #f7f7f7;
+  border-left: 1px solid #f7f7f7;
+  .projects-column {
+    display: inline-block;
+    height: 100%;
+    width: calc(25% - 1px);
+    overflow: hidden;
+    vertical-align: top;
+    border-right: 1px solid #f7f7f7;
+  }
+  .project-column {
+    display: inline-block;
+    height: 100%;
+    width: calc(35% - 1px);
+    overflow: hidden;
+    vertical-align: top;
+    border-right: 1px solid #f7f7f7;
+  }
+  .task-column {
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+    overflow: hidden;
+    vertical-align: top;
+  }
+}

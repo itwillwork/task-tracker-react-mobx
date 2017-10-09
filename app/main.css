@@ -1,0 +1,10 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background-color: #ecf0f1;
+}

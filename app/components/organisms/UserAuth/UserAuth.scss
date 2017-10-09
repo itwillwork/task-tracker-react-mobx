@@ -1,0 +1,24 @@
+.UserAuth {
+  height: 40px;
+  line-height: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  font-size: 12px;
+  clear: both;
+
+  .user {
+
+  }
+  .logout {
+    float: right;
+    display: inline-block;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

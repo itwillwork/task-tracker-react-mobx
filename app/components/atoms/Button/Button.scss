@@ -1,0 +1,21 @@
+.Button {
+  display: inline-block;
+  position: relative;
+  background-color: #0193d7;
+  color: #fff;
+  border: 1px solid #0193d7;
+  border-radius: 2px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:focus {
+    outline: none;
+  }
+}

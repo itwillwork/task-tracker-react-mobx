@@ -1,0 +1,36 @@
+.Project {
+  height: 100%;
+  box-sizing: border-box;
+  background: white;
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .name {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+  }
+  .author {
+    font-size: 12px;
+    line-height: 15px;
+    color: #b5b5b5;
+  }
+  .create-date {
+    font-size: 12px;
+    line-height: 15px;
+    color: #b5b5b5;
+    margin-bottom: 8px;
+  }
+  .members {
+    margin-bottom: 4px;
+    &-title {
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+    &-group {
+      margin-bottom: 4px;
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
+}

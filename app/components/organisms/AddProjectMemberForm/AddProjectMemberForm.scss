@@ -1,0 +1,26 @@
+.AddProjectMemberForm {
+  .fields {
+    margin: 20px 0;
+  }
+  .field {
+    margin-bottom: 8px;
+  }
+  .actions {
+    text-align: right;
+  }
+  .error {
+    background-color: tomato;
+    margin: 8px 0;
+    padding: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 2px;
+  }
+  .success {
+    margin: 8px 0 32px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,19 @@
+.ProjectList {
+  height: 100%;
+  .title {
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+  }
+  .list {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100% - 112px);
+  }
+  .actions {
+    height: 52px;
+  }
+}

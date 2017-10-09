@@ -1,0 +1,36 @@
+.Task {
+  height: 100%;
+  box-sizing: border-box;
+  background: white;
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .name {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+  }
+  .author {
+    font-size: 12px;
+    line-height: 15px;
+    color: #b5b5b5;
+  }
+  .created-date {
+    font-size: 12px;
+    line-height: 15px;
+    color: #b5b5b5;
+    margin-bottom: 8px;
+  }
+  .status {
+    font-size: 12px;
+    color: #b5b5b5;
+  }
+  .assign-to {
+    font-size: 12px;
+  }
+  .last-modified-date {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #b5b5b5;
+  }
+}

@@ -1,0 +1,6 @@
+node_modules
+.idea
+*.jar
+.DS_Store
+logs
+build

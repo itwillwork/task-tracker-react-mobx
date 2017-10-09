@@ -1,0 +1,23 @@
+.CreateTaskForm {
+  background-color: #f7f7f7;
+  padding: 8px;
+  margin: 20px 0 0;
+
+  .fields {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .actions {
+    text-align: right;
+    vertical-align: top;
+  }
+  .row {
+    margin-bottom: 8px;
+  }
+  .title {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 8px;
+    padding: 0 8px;
+  }
+}
