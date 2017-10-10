@@ -1,23 +1,21 @@
 // Link.react-test.js
 import React from 'react';
-import Link from '../Link.react';
+import Accordion from './Accordion';
 import renderer from 'react-test-renderer';
 
 test('Link changes the class when hovered', () => {
 	const component = renderer.create(
-		<Link page="http://www.facebook.com">Facebook</Link>
+		<Accordion herf="http://www.facebook.com">Facebook</Accordion>
 	);
 	let tree = component.toJSON();
 	expect(tree).toMatchSnapshot();
 
-	// manually trigger the callback
-	tree.props.onMouseEnter();
+	component.getInstance().showChildren();
 	// re-rendering
 	tree = component.toJSON();
 	expect(tree).toMatchSnapshot();
 
-	// manually trigger the callback
-	tree.props.onMouseLeave();
+	component.getInstance().hideChildren();
 	// re-rendering
 	tree = component.toJSON();
 	expect(tree).toMatchSnapshot();

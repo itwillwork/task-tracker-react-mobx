@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link changes the class when hovered 1`] = `
+<div
+  className="Accordion"
+>
+  <span
+    className="toggle"
+    onClick={[Function]}
+  >
+    Показать
+  </span>
+</div>
+`;
+
+exports[`Link changes the class when hovered 2`] = `
+<div
+  className="Accordion"
+>
+  <div>
+    <span
+      className="toggle"
+      onClick={[Function]}
+    >
+      Скрыть
+    </span>
+  </div>
+  <div
+    className="container"
+  >
+    Facebook
+  </div>
+</div>
+`;
+
+exports[`Link changes the class when hovered 3`] = `
+<div
+  className="Accordion"
+>
+  <span
+    className="toggle"
+    onClick={[Function]}
+  >
+    Показать
+  </span>
+</div>
+`;
