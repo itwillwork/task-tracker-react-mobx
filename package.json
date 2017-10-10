@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --port=3004",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +25,11 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "babel-jest": "*",
+    "babel-preset-env": "*",
+    "jest": "*",
+    "react-addons-test-utils": "15.4.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
