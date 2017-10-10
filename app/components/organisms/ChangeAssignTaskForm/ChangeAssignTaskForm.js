@@ -13,8 +13,6 @@ import Select from '../../atoms/Select/Select';
 
 import { observer, inject } from 'mobx-react';
 
-@inject('user', 'projects', 'projectMember')
-@observer
 class ChangeAssignTaskForm extends Form {
 	constructor(props) {
 		super(props);
@@ -23,7 +21,6 @@ class ChangeAssignTaskForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		console.log(this.state.fields);
 		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
 	};
 

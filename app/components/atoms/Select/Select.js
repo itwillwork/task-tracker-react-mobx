@@ -13,7 +13,6 @@ class Select extends Component {
 		this.props.onChange(this.props.name, event.target.value);
 	};
 	render() {
-		console.log(this.props);
 		return (
 			<div className={cls('Select')}>
 				<select name={this.props.name} onChange={this.handleChange}>

@@ -9,20 +9,15 @@ import {
 
 const browserHistory = createBrowserHistory();
 
-import User from '../../../models/user';
-import Projects from '../../../models/projects';
-import ProjectMember from '../../../models/projectMember';
-import Tasks from '../../../models/tasks';
-import Comments from '../../../models/comments';
+import User from '../../../models/User';
+import Tracker from '../../../models/tracker/Tracker';
 
 const routingStore = new RouterStore();
+
 const stores = {
 	routing: routingStore,
-	user:  User,
-	projects: Projects,
-	projectMember: ProjectMember,
-	tasks: Tasks,
-	comments: Comments,
+	user:  new User(),
+	tracker: new Tracker(),
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

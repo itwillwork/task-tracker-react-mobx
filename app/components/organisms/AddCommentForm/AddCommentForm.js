@@ -11,8 +11,6 @@ const cls = classNames.bind(styles);
 
 import { observer, inject } from 'mobx-react';
 
-@inject('tasks', 'projects')
-@observer
 class AddCommentForm extends Form {
 	constructor(props) {
 		super(props);

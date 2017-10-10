@@ -10,8 +10,6 @@ const cls = classNames.bind(styles);
 
 import { observer, inject } from 'mobx-react';
 
-@inject('projects')
-@observer
 class CreateProjectForm extends Form {
 	constructor(props) {
 		super(props);

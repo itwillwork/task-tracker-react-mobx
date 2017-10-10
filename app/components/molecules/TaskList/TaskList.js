@@ -6,39 +6,41 @@ const cls = classNames.bind(styles);
 
 import TaskListItem from './blocks/TaskListItem/TaskListItem';
 
-import { observer, inject } from 'mobx-react';
-
-@inject('tasks', 'projects', 'comments')
-@observer
 class TaskList extends Component {
 	constructor(props) {
 		super(props);
 	}
 	componentDidMount() {
-		this.props.tasks.fetchProjectTask(this.props.projects.selected);
+
 	}
 	handleSelect = (selectedTaskId) => {
-		this.props.tasks.selectTask(selectedTaskId);
-		this.props.comments.fetchTaskComments(selectedTaskId, this.props.projects.selected.id);
+		this.props.onSelect(selectedTaskId);
 	};
 
 	render() {
-		const projectTasks = this.props.tasks.projectTasks;
+		const tasksRequest = this.props.tasks;
 
 		return (
 			<div className={cls('TaskList')}>
 				<div className={cls('title')}>Задачи проекта</div>
 				{
-					projectTasks.success
+					tasksRequest.success
 					&&
-					projectTasks.data.map((task, idx) => (
+					tasksRequest.data.map((task, idx) => (
 						<TaskListItem
 							{...task}
 							key={idx}
 							onSelect={this.handleSelect}
-							isSelected={task.id === this.props.tasks.selected.id}
+							isSelected={task.id === this.props.selectedTaskId}
 						/>
 					))
+				}
+				{
+					tasksRequest.success && !tasksRequest.data.length
+					&&
+					(
+						<div className={cls('empty')}>Пока нет</div>
+					)
 				}
 			</div>
 		);

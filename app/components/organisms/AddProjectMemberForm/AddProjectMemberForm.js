@@ -13,8 +13,6 @@ import Select from '../../atoms/Select/Select';
 
 import { observer, inject } from 'mobx-react';
 
-@inject('user', 'projects', 'projectMember')
-@observer
 class AddProjectMemberForm extends Form {
 	constructor(props) {
 		super(props);
@@ -23,7 +21,6 @@ class AddProjectMemberForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		console.log(this.state.fields);
 		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
 	};
 
@@ -59,7 +56,6 @@ class AddProjectMemberForm extends Form {
 		)
 	}
 	render() {
-		console.log('allUsers', this.props.user.allUsers);
 		return (
 			<div className={cls('AddProjectMemberForm')}>
 				<div className={cls('fields')}>

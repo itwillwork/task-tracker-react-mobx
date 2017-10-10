@@ -10,7 +10,7 @@ import UserAuth from '../../organisms/UserAuth/UserAuth';
 
 import { observer, inject } from 'mobx-react';
 
-@inject('projects', 'projectMember', 'user', 'routing')
+@inject('tracker')
 @observer
 class ProjectList extends Component {
 	constructor(props) {
@@ -18,19 +18,13 @@ class ProjectList extends Component {
 
 		this.handleSelect = this.handleSelect.bind(this);
 	}
-	componentDidMount() {
-		this.props.user.login().then(res => {
-			this.props.projects.fetchUserProjects();
-		}, err => {
-			this.props.routing.push('signin');
-		})
-	}
+
 	handleSelect(id) {
-		this.props.projects.selectProject(id);
-		this.props.projectMember.fetchProjectMembers(id);
+		this.props.tracker.select(id);
 	}
 	render() {
-		if (!this.props.projects.userProjects.success) {
+		const { selectedProjectId, projects } = this.props.tracker;
+		if (!projects.success) {
 			return <span>loading ...</span>
 		}
 		return (
@@ -38,12 +32,12 @@ class ProjectList extends Component {
 				<UserAuth />
 				<div className={cls('title')}>Проекты</div>
 				<div className={cls('list')}>
-					{this.props.projects.userProjects.data.map((project, idx) => (
+					{projects.data.map((project, idx) => (
 						<ProjectListItem
 							{...project}
 							key={idx}
 							onSelect={this.handleSelect}
-							isSelected={this.props.projects.selected.id === project.id}
+							isSelected={selectedProjectId === project.id}
 						/>
 					))}
 				</div>
@@ -55,5 +49,10 @@ class ProjectList extends Component {
 		);
 	}
 }
+
+ProjectList.defaultProps = {
+	selected: {},
+	projects: [],
+};
 
 export default ProjectList;

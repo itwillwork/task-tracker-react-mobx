@@ -40,7 +40,6 @@ const User = class User {
 	_setSignInRequestState(data) {
 		this._signin = data;
 		if (data.success) {
-			console.log('setCookie',  data.data);
 			Cookie.set(AUTH_TOKEN_KEY, data.data.token)
 		}
 	}
@@ -118,4 +117,4 @@ const User = class User {
 
 };
 
-export default new User;
+export default User;

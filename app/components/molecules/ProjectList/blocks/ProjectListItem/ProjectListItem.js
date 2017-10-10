@@ -21,7 +21,7 @@ class ProjectListItem extends Component {
 					{this.props.name}
 				</div>
 				<div className={cls('author')}>
-					{this.props.author.first_name} {this.props.author.last_name}
+					{this.props.author}
 				</div>
 			</div>
 		);

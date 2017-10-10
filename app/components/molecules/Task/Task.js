@@ -10,63 +10,64 @@ import AddCommentForm from '../../organisms/AddCommentForm/AddCommentForm';
 import ChangeTaskStatusForm from '../../organisms/ChangeTaskStatusForm/ChangeTaskStatusForm';
 import ChangeAssignTaskForm from '../../organisms/ChangeAssignTaskForm/ChangeAssignTaskForm';
 
+import formatDate from '../../../utility/formatDate';
+
 import { observer, inject } from 'mobx-react';
 
-const mapStatus = {
-	1: "Новый",
-	2: "В работе",
-	3: "Сделан",
-};
+// import { rolesMap } from '../../../models/tracker/Member';
+import { mapStatus } from '../../../models/tracker/Task';
 
-@inject('tasks')
+@inject('tracker')
 @observer
 class Task extends Component {
 	constructor(props) {
 		super(props);
 	}
 	render() {
-		const selected = this.props.tasks.selected;
+		console.log(this.props.tracker.selectedTask);
+		const selectedTask = this.props.tracker.selectedTask;
 
-		if (!selected.id) {
+		if (!selectedTask.id) {
 			return null;
 		}
 
 		return (
 			<div className={cls('Task')}>
 				<div className={cls('name')}>
-					{selected.text}
+					{selectedTask.text}
 				</div>
 				<div className={cls('author')}>
-					Автор: {selected.author}
+					Автор: {selectedTask.author}
 				</div>
 				<div className={cls('created-date')}>
-					Создана: {selected.created}
+					Создана: {formatDate(selectedTask.created)}
 				</div>
 				<div className={cls('assign-to')}>
-					Assign to: {selected.assignToUser}
+					Assign to: {selectedTask.assignToUser}
 				</div>
 				<Accordion
 					textForShow={'Изменить assign to?'}
 					textFotHide={'Скрыть форму'}
 				><ChangeAssignTaskForm /></Accordion>
 				<div className={cls('status')}>
-					Статус: {mapStatus[selected.status]}
+					Статус: {mapStatus[selectedTask.status]}
 				</div>
 				<Accordion
 					textForShow={'Изменить статус'}
 					textFotHide={'Скрыть форму'}
 				><ChangeTaskStatusForm /></Accordion>
 				<div className={cls('last-modified-date')}>
-					Изменено: {selected.lastModified}
+					Изменено: {formatDate(selectedTask.lastModified)}
 				</div>
 				<div className={cls('description')}>
-					{selected.description}
+					{selectedTask.description}
 				</div>
 				<div className={cls('comments')}>
-					<CommentsList />
-
+					<CommentsList
+						comments={selectedTask.comments}
+					/>
 				</div>
-				<AddCommentForm />
+				{/*<AddCommentForm />*/}
 			</div>
 		);
 	}

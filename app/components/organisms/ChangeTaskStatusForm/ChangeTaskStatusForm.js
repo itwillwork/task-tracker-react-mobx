@@ -24,8 +24,6 @@ const options = Object.keys(mapStatus).map(key => ({
 	label: mapStatus[key],
 }));
 
-@inject('user', 'projects', 'projectMember')
-@observer
 class ChangeTaskStatusForm extends Form {
 	constructor(props) {
 		super(props);
@@ -34,7 +32,6 @@ class ChangeTaskStatusForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		console.log(this.state.fields);
 		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
 	};
 
