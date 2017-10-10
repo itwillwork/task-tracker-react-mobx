@@ -105,9 +105,10 @@ const User = class User {
 	@action.bound
 	_setLogoutRequestState(data) {
 		this._logout = data;
-		if (data.success || data.error) {
-			Cookie.remove(AUTH_TOKEN_KEY)
-		}
+
+		// if (data.success || data.error) {
+			Cookie.remove(AUTH_TOKEN_KEY);
+		// }
 	}
 
 	@action

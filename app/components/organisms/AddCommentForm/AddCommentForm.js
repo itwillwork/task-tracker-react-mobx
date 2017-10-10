@@ -11,22 +11,17 @@ const cls = classNames.bind(styles);
 
 import { observer, inject } from 'mobx-react';
 
+@inject('tracker')
+@observer
 class AddCommentForm extends Form {
 	constructor(props) {
 		super(props);
 	}
 
 	handleSubmit = () => {
-		this.props.tasks.addTask({
-			...this.state.fields,
-			"project_id": this.props.projects.selected.id,
-			"section_id": null,
-			"status": 1
-		});
-
+		this.props.tracker.selectedTask.addComment(this.state.fields);
 	};
 	render() {
-		const { user } = this.props;
 		const { fields: fieldsValues } = this.state;
 
 		return (

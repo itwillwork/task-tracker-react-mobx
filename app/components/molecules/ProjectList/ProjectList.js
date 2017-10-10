@@ -32,14 +32,16 @@ class ProjectList extends Component {
 				<UserAuth />
 				<div className={cls('title')}>Проекты</div>
 				<div className={cls('list')}>
-					{projects.data.map((project, idx) => (
-						<ProjectListItem
-							{...project}
-							key={idx}
-							onSelect={this.handleSelect}
-							isSelected={selectedProjectId === project.id}
-						/>
-					))}
+					<div className={cls('container')}>
+						{projects.data.map((project, idx) => (
+							<ProjectListItem
+								{...project}
+								key={idx}
+								onSelect={this.handleSelect}
+								isSelected={selectedProjectId === project.id}
+							/>
+						))}
+					</div>
 				</div>
 				<div className={cls('actions')}>
 					<CreateProjectForm />

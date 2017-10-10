@@ -81,7 +81,7 @@ export default class Tracker {
 		this._addProject = data;
 
 		if (data.success) {
-			this.fetchUserProjects();
+			this.fetchProjects();
 		}
 	}
 

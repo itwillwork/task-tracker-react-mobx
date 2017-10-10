@@ -24,6 +24,8 @@ const options = Object.keys(mapStatus).map(key => ({
 	label: mapStatus[key],
 }));
 
+@inject('tracker')
+@observer
 class ChangeTaskStatusForm extends Form {
 	constructor(props) {
 		super(props);
@@ -32,7 +34,7 @@ class ChangeTaskStatusForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
+		this.props.tracker.selectedTask.changeStatus(this.state.fields);
 	};
 
 

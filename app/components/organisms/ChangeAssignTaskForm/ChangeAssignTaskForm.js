@@ -13,6 +13,8 @@ import Select from '../../atoms/Select/Select';
 
 import { observer, inject } from 'mobx-react';
 
+@inject('tracker', 'user')
+@observer
 class ChangeAssignTaskForm extends Form {
 	constructor(props) {
 		super(props);
@@ -21,7 +23,7 @@ class ChangeAssignTaskForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
+		this.props.tracker.selectedTask.changeAssign(this.state.fields);
 	};
 
 	getUserSelectorOptionLabel = user => `${user.first_name} ${user.last_name} @${user.username}`;

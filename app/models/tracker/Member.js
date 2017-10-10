@@ -11,7 +11,7 @@ const rolesMap = {
 	2: 'Developer'
 };
 
-const getAvailableRoles = () => {
+const availableRoles = (() => {
 	return Object.keys(rolesMap)
 		.reduce((res, key) => {
 			res.push({
@@ -21,7 +21,7 @@ const getAvailableRoles = () => {
 
 			return res;
 		}, []);
-};
+})();
 
 export default class Member {
 	constructor(store, data) {
@@ -31,4 +31,4 @@ export default class Member {
 	}
 };
 
-export { rolesMap, getAvailableRoles };
+export { rolesMap, availableRoles };

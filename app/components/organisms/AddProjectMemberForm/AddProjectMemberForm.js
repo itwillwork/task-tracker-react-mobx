@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';
 import Form from '../../atoms/Form/Form';
-import A from "../../atoms/A/A";
+import { availableRoles } from '../../../models/tracker/Member';
 
 import styles from './AddProjectMemberForm.scss';
 import classNames from 'classnames/bind';
@@ -13,6 +13,8 @@ import Select from '../../atoms/Select/Select';
 
 import { observer, inject } from 'mobx-react';
 
+@inject('tracker', 'user')
+@observer
 class AddProjectMemberForm extends Form {
 	constructor(props) {
 		super(props);
@@ -21,7 +23,7 @@ class AddProjectMemberForm extends Form {
 		this.props.user.fetchAllUsers();
 	}
 	handleSubmit = () => {
-		this.props.projectMember.addToProject(this.props.projects.selected, this.state.fields);
+		this.props.tracker.selectedProject.addMember(this.state.fields);
 	};
 
 
@@ -31,7 +33,7 @@ class AddProjectMemberForm extends Form {
 			<Select
 				name={'role'}
 				placeholder={'Выберите роль в проекте'}
-				options={this.props.projectMember.availableRoles}
+				options={availableRoles}
 				getLabel={this.getRoleSelectorOptionLabel}
 				valueKey={'key'}
 				onChange={this.handleChangeField}

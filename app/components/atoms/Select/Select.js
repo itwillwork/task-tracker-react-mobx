@@ -16,7 +16,7 @@ class Select extends Component {
 		return (
 			<div className={cls('Select')}>
 				<select name={this.props.name} onChange={this.handleChange}>
-					<option disabled default>{this.props.placeholder}</option>
+					<option>{this.props.placeholder}</option>
 					{this.props.options.map((option, key) => (
 						<option key={key} value={option[this.props.valueKey]}>{this.props.getLabel(option)}</option>
 					))}

@@ -26,7 +26,7 @@ class TaskListItem extends Component {
 					{this.props.text}
 				</div>
 				<div className={cls('info')}>
-					{mapStatus[this.props.status]}, {this.props.author.first_name} {this.props.author.last_name}
+					{mapStatus[this.props.status]}, {this.props.author}
 				</div>
 			</div>
 		);

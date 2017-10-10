@@ -10,19 +10,15 @@ const cls = classNames.bind(styles);
 
 import { observer, inject } from 'mobx-react';
 
+@inject('tracker')
+@observer
 class CreateProjectForm extends Form {
 	constructor(props) {
 		super(props);
 	}
 
 	handleSubmit = () => {
-		this.props.projects.addProject(this.state.fields).then(
-			() => {
-				this.props.projects.fetchUserProjects();
-			},
-			() => {
-				this.props.projects.fetchUserProjects();
-			});
+		this.props.tracker.addProject(this.state.fields);f
 	};
 	render() {
 		const { user } = this.props;

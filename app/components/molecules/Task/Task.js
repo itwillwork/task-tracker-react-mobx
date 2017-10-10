@@ -67,7 +67,7 @@ class Task extends Component {
 						comments={selectedTask.comments}
 					/>
 				</div>
-				{/*<AddCommentForm />*/}
+				<AddCommentForm />
 			</div>
 		);
 	}

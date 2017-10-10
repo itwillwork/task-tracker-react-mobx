@@ -7,6 +7,7 @@ const normalize = res => res.results;
 import Comment from './Comment';
 
 const COMMENT_URL = '/api/comment/';
+const TASKS_URL = '/api/tasks/';
 
 const mapStatus = {
 	1: "Новый",
@@ -16,6 +17,9 @@ const mapStatus = {
 
 const Task = class Task {
 	@observable _comments = loader.initial();
+	@observable _addComment = loader.initial();
+	@observable _changeStatus = loader.initial();
+	@observable _changeAssign = loader.initial();
 
 	store = null;
 	id = null;
@@ -74,6 +78,75 @@ const Task = class Task {
 		return this._comments;
 	}
 
+	@action.bound
+	_updateAddCommentRequestStatus(data) {
+		this._addComment = data;
+
+		if (data.success) {
+			this.fetchComments();
+		}
+	}
+
+	@action
+	addComment(data) {
+		const params = {
+			...data,
+			'task': this.id,
+		};
+		return makeRequest(RQ_TYPES.POST, COMMENT_URL, params, this._updateAddCommentRequestStatus);
+	}
+
+	@computed
+	get addCommentRequestStatus() {
+		return this._addComment;
+	}
+
+
+	@action.bound
+	_updateChangeStatusRequestStatus(data) {
+		this._changeStatus = data;
+
+		if (data.success) {
+			this.store.fetchTasks();
+		}
+	}
+
+	@action
+	changeStatus(data) {
+		const params = {
+			...data,
+			'id': this.id,
+		};
+		return makeRequest(RQ_TYPES.POST, TASKS_URL, params, this._updateChangeStatusRequestStatus);
+	}
+
+	@computed
+	get changeStatusRequestStatus() {
+		return this._changeStatus;
+	}
+
+	@action.bound
+	_updateAssignStatusRequestStatus(data) {
+		this._changeAssign = data;
+
+		if (data.success) {
+			this.store.fetchTasks();
+		}
+	}
+
+	@action
+	changeAssign(data) {
+		const params = {
+			...data,
+			'id': this.id,
+		};
+		return makeRequest(RQ_TYPES.POST, TASKS_URL, params, this._updateAssignStatusRequestStatus);
+	}
+
+	@computed
+	get changeAssignRequestStatus() {
+		return this._changeAssign;
+	}
 };
 
 export default Task;

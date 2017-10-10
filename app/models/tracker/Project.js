@@ -92,11 +92,21 @@ const Project = class Project {
 	@action.bound
 	_updateAddTaskRequestStatus(data) {
 		this._addTask = data;
+
+		if (data.success) {
+			this.fetchTasks();
+		}
 	}
 
 	@action
 	addTask(data) {
-		return makeRequest(RQ_TYPES.POST, TASKS_URL, data, this._updateAddTaskRequestStatus);
+		const params = {
+			...data,
+			'project_id': this.store.selectedProjectId,
+			'section_id': null,
+			'status': 1,
+		};
+		return makeRequest(RQ_TYPES.POST, TASKS_URL, params, this._updateAddTaskRequestStatus);
 	}
 
 	@computed
@@ -144,13 +154,17 @@ const Project = class Project {
 	@action.bound
 	_updateAddMemberRequestState(data) {
 		this._addMember = data;
+
+		if (data.success) {
+			this.fetchMembers();
+		}
 	}
 
 	@action
-	addMember(selectedProject, { user, role }) {
+	addMember({ user, role }) {
 		const params = {
 			"user_id": parseInt(user, 10),
-			"project": selectedProject.id,
+			"project": this.store.selectedProjectId,
 			"role": parseInt(role, 10)
 		};
 
